@@ -6,9 +6,8 @@ public class Turma {
 	private Alunos[] quantidadeAlunos = new Alunos[40];
 	private String nomeTurma;
 
-	public Turma(String curso,Alunos[] quantidadeAlunos,String nomeTurma) {
+	public Turma(String curso,String nomeTurma) {
 		this.curso = curso;
-		this.quantidadeAlunos = quantidadeAlunos;
 		this.nomeTurma = nomeTurma;
 	}
 	
@@ -19,9 +18,6 @@ public class Turma {
 		this.curso = curso;
 	}
 	
-	public void setQuantidadeAlunos(Alunos[] quantidadeAlunos) {
-		this.quantidadeAlunos = quantidadeAlunos;
-	}
 	public String getNomeTurma() {
 		return nomeTurma;
 	}
@@ -30,7 +26,7 @@ public class Turma {
 	}
 	
 	public boolean checkMatricula(int matricula) {
-		for(Alunos aluno: quantidadeAlunos) {
+		for(Alunos aluno: this.quantidadeAlunos) {
 			if(aluno.getMatricula() == matricula) {
 				return true;
 			}			
@@ -42,10 +38,8 @@ public class Turma {
 			
 		for(int index = 0;index<=this.quantidadeAlunos.length;index++) {
 			if(this.quantidadeAlunos[index] == null) {
-				if(!checkMatricula(newAluno.getMatricula())) {
 					quantidadeAlunos[index] = newAluno;
 					return true;
-				}
 			}
 		}
 		return false;
@@ -80,7 +74,7 @@ public class Turma {
 	}
 	
 	public void printAlunos() {
-		for(Alunos aluno: quantidadeAlunos) {
+		for(Alunos aluno: this.quantidadeAlunos) {
 			System.out.println(aluno.getNome());
 		}
 	}
